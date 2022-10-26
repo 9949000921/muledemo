@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="8e5f1d63-8b41-4a3d-a86c-eff97dfb7007" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<file:config name="File_Config" doc:name="File Config" doc:id="d7b8c933-3859-49c2-bcf7-7094658faad4" />
+	<flow name="lithipFlow" doc:id="602f7c22-14a2-4e29-a4ed-ea3cc59f664d" >
+		<http:listener doc:name="Listener" doc:id="48625c22-8ccd-42f7-ba92-a72cbd9b41fb" config-ref="HTTP_Listener_config" path="/studio"/>
+		<file:read doc:id="aa7d3607-4423-4254-b00b-aab07b4d7647" config-ref="File_Config" path="C:\Users\lithi\Desktop\pharse template\pharse tgemplate.txt"/>
+		<logger level="INFO" doc:name="Logger" doc:id="628821f9-a10b-493a-b550-8545edcc1cf5" message="#[payload]"/>
+	</flow>
+</mule>
