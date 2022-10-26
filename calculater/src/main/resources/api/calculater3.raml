@@ -1,0 +1,49 @@
+#%RAML 1.0
+title: calculater3
+version: v1
+protocols:
+  - HTTP
+  - HTTPS
+mediaType: 
+- application/json
+traits:
+  query: !include /examples/traits/trait.raml
+/addition:
+  get:
+    is:
+      - query
+    description: getting the addition
+    responses:
+      200:
+        body:
+          example: !include /examples/addition-responce.json
+/subraction:
+  put:
+    is:
+      - query
+    description: getting the subraction
+    responses:
+      200:
+        body:
+          example: !include /examples/subraction-responce.json   
+/multiplication:
+  post:
+    is:
+      - query
+    description: getting the multiplication
+    responses:
+      200:
+        body:
+          example: !include /examples/multiplication-responce.json
+/division:
+  patch:
+    is:
+      - query
+    description: getting the division
+    responses:
+      200:
+        body:
+          example: !include /examples/division-responce.json
+              
+
+      
